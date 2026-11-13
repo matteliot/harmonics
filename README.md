@@ -46,6 +46,11 @@ the Voice knob sets their level (fully CCW silences them). To change the wording
 
 Red means the firmware didn't provide the working buffer.
 
+## Install
+
+Download [`release/harmonics.endl`](release/harmonics.endl) (on GitHub: open it and click the download button), connect the Endless
+to your computer over USB and copy the file onto the pedal. Nothing needs to be built. To rebuild it from source, see below.
+
 ## Build
 
 ```sh
