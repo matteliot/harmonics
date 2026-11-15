@@ -68,8 +68,14 @@ cargo build --release        # ELF for the pedal (default target is thumbv7em-no
 cargo sim                    # -> target/render/harmonics_demo.wav
 ```
 
-This renders the same original A-minor phrase at 90 bpm in each mode on a modelled electric guitar (`src/guitar.rs`):
+This renders the same original A-minor phrase at 90 bpm in each mode on a modelled electric guitar (`src/pedalkit/guitar.rs`):
 an eighth-note line, a held A3, then an Am chord. It steps through the modes with the footswitch (press, press, press,
 then hold back to mode 1), so you hear each announcement. Then it prints each section's level, plus a table for the
 held A3: the tracked pitch, the gain at each of its first 8 harmonics (output over input, so the note's own spectrum
 cancels out) and each mode's phrase level.
+
+## Code layout
+
+- `src/harmonics/`: the pedal. `patch.rs` wires it up, `presets.rs` holds every number, and the other files are its blocks.
+- `src/pedalkit/`: shared building blocks (effects, DSP, the Endless ABI, the entry points, the demo renderer). It's a copy of the master in [superPedal](https://github.com/matteliot/superPedal), which also carries this pedal, so don't edit it here.
+- `src/host/`: the `cargo sim` demo (`score.rs` is what it plays).
